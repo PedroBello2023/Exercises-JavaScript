@@ -10,28 +10,43 @@ Resolução do Exercício 34): */
 console.log("=====================================================")
 console.log("                ESCOLHENDO PESSOAS ")
 console.log("=====================================================")
-let nome = ""
+let totalHomens = 0
+let totalMulher = 0
+let sexo = 0
+let idade = 0
+let cabelo = 0
+let cadastro = ""
+
 do {
-    let nome = readlineSync.question("Nome: ")
-    let sexo = readlineSync.question("Sexo [M/F]: ")
-    let idade = readlineSync.question("Idade: ")
-    console.log("Tipos de Cabelo:")
+    console.log("Sexo: ")
+    console.log("[1] Homem")
+    console.log("[2] Mulher")
+    sexo = Number(readlineSync.question("Sua escolha: "))
+    idade = Number(readlineSync.question("Idade: "))
+    console.log("Cor do Cabelo:")
     console.log("[1] Preto")
     console.log("[2] Castanho")
     console.log("[3] Loiro")
     console.log("[4] Ruivo")
-    let cabelo = Number(readlineSync.question("Selecione um tipo de cabelo: "))
-    let continuar = readlineSync.question("Deseja continuar [S/N]? ")
+    cabelo = Number(readlineSync.question("Sua opcao: "))
+    console.log("Cadastrar mais alguém?")
+    cadastro = String(readlineSync.question("[s] sim / [n] nao: "))
 
+    switch(sexo){
+        case 1:
+            if(idade > 18 && cabelo == 2){
+            totalHomens +=1
+        }
+        case 2:
+            if ( 25 < idade < 30 && cabelo == 3){
+            totalMulher +=1
+        }
+        break
+    }
 
-} while(continuar == "s")
-
-let homem = 0
-let mulher = 0
-if (sexo == "m") {
-    homem++
-} else if (sexo == "f") {
-    mulher++
-}
-
-console.log(`Foram cadastrados ${homem} homens e ${mulher} mulheres.`)
+} while ( cadastro == 's' )
+console.log("=====================================================")
+console.log(`Total de homens com mais de 18 anos: ${totalHomens}.
+`)
+console.log(`Total de mulheres com idade entre 25 e 30 anos e cabelos loiros: ${totalMulher}`)
+console.log("=====================================================")
